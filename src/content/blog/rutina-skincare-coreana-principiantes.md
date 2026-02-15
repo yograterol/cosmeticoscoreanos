@@ -3,7 +3,7 @@ title: "Guía Definitiva: Rutina de Skincare Coreana para Principiantes"
 description: "Aprende la rutina de skincare coreana de 10 pasos. Guía completa para principiantes: qué productos usar, orden correcto y mejores marcas."
 date: 2026-01-20
 author: "Cosméticos Coreanos Colombia"
-image: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=1200&h=630&fit=crop"
+image: "/images/blog/rutina-coreana.jpg"
 category: "rutinas-k-beauty"
 tags: ["rutina", "k-beauty", "principiantes", "skincare", "10 pasos"]
 ---
@@ -54,7 +54,7 @@ La doble limpieza esfundacional en K-Beauty. El primer paso usa un limpiador ole
 2. Masajea suavemente por 1-2 minutos
 3. Enjuaga con agua tibia
 
-![Oil Cleanser - K-Beauty](https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=600&fit=crop)
+![Oil Cleanser - K-Beauty](/images/blog/oil-cleanser.jpg)
 
 **Recomendaciones:**
 - Para piel seca: Busca ingredientes como aceite de jojoba o almendra
