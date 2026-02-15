@@ -1,0 +1,136 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+---
+
+<MainLayout 
+  title="Cosméticos Coreanos para Piel Grasa | Control de Sebo 2026"
+  description="Los mejores cosméticos coreanos para piel grasa y mixta. Controla el sebo, cierra poros y logra un acabado mate con rutinas específicas K-Beauty."
+>
+  <div class="container">
+    <header class="page-header">
+      <h1>Cosméticos Coreanos para Piel Grasa</h1>
+      <p class="subtitle">Controla el brillo, cierra poros y equilibra tu piel</p>
+    </header>
+
+    <section class="intro">
+      <p>La piel grasa necesita cuidados específicos. Los cosméticos coreanos ofrecen fórmulas <strong>oil-free</strong> y <strong>no comedogénicas</strong> que controlan el sebo sin resecar. La clave está en la hidratación correcta.</p>
+    </section>
+
+    <section class="products-section">
+      <h2>Mejores Productos para Piel Grasa</h2>
+      
+      <div class="product-cards">
+        <div class="product-card">
+          <h3>Some By Mi AHA/BHA/PHA 30Days Miracle</h3>
+          <p>El más vendido para acne y piel problemática. Exfoliación suave.</p>
+          <span class="tag">Acne</span>
+          <span class="tag">Poros</span>
+        </div>
+        
+        <div class="product-card">
+          <h3>IsNTree Hyaluronic Acid Toner</h3>
+          <p>Hidratación ligera que no obstruye. Perfecto para piel grasa.</p>
+          <span class="tag">Hidratante</span>
+          <span class="tag">Ligero</span>
+        </div>
+        
+        <div class="product-card">
+          <h3>Purpose Barrier Green Level Emulsion</h3>
+          <p>Emulsión ultraligera. Se absorbe instantáneamente.</p>
+          <span class="tag">Oil-free</span>
+          <span class="tag">Clean</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="routine-section">
+      <h2>Rutina para Piel Grasa</h2>
+      
+      <div class="routine-steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div class="step-content">
+            <h3>Foam Cleanser</h3>
+            <p>Limpiador espuma para quitar exceso de sebo</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">2</span>
+          <div class="step-content">
+            <h3>Exfoliante (2-3x semana)</h3>
+            <p>BHA para limpiar poros</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">3</span>
+          <div class="step-content">
+            <h3>Tónico Equilibrante</h3>
+            <p>pH balanceado, sin alcohol</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">4</span>
+          <div class="step-content">
+            <h3>Serum Niacinamida</h3>
+            <p>Controla sebo y minimize poros</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">5</span>
+          <div class="step-content">
+            <h3>Gel Cream / Emulsión</h3>
+            <p>Textura ligerísima</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tips-section">
+      <h2>Ingredientes Clave para Piel Grasa</h2>
+      <ul>
+        <li><strong>Niacinamida:</strong> Controla sebo y minimize poros</li>
+        <li><strong>Salicylic Acid (BHA):</strong> Penetra poros, exfolia</li>
+        <li><strong>Centella Asiatica:</strong> Calma irritaciones</li>
+        <li><strong>Green Tea:</strong> Antioxidante y seborregulador</li>
+      </ul>
+    </section>
+  </div>
+</MainLayout>
+
+<style>
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+  .page-header { text-align: center; margin-bottom: 2rem; }
+  .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  .subtitle { color: var(--color-text-light); font-size: 1.2rem; }
+  
+  .intro { background: #f8f9fa; padding: 2rem; border-radius: 12px; margin-bottom: 3rem; }
+  .intro p { font-size: 1.1rem; line-height: 1.7; }
+  
+  .products-section { margin-bottom: 3rem; }
+  .products-section h2 { margin-bottom: 1.5rem; }
+  
+  .product-cards { display: grid; gap: 1.5rem; }
+  .product-card { background: white; border: 1px solid #eee; padding: 1.5rem; border-radius: 12px; }
+  .product-card h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+  .product-card p { color: #666; margin-bottom: 1rem; }
+  .tag { display: inline-block; background: #e8f5e9; color: #2e7d32; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; margin-right: 0.5rem; }
+  
+  .routine-section { margin-bottom: 3rem; }
+  .routine-section h2 { margin-bottom: 1.5rem; }
+  
+  .routine-steps { display: grid; gap: 1rem; }
+  .step { display: flex; gap: 1rem; align-items: flex-start; }
+  .step-num { width: 40px; height: 40px; background: var(--color-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+  .step-content h3 { margin-bottom: 0.25rem; }
+  .step-content p { color: #666; font-size: 0.95rem; }
+  
+  .tips-section { background: #e3f2fd; padding: 2rem; border-radius: 12px; }
+  .tips-section h2 { margin-bottom: 1rem; }
+  .tips-section ul { list-style: none; }
+  .tips-section li { padding: 0.75rem 0; border-bottom: 1px solid #bbdefb; }
+  .tips-section li:last-child { border: none; }
+</style>

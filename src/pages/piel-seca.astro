@@ -1,0 +1,151 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { categories } from '../../data/categories';
+import { brands } from '../../data/brands';
+---
+
+<MainLayout 
+  title="Cosméticos Coreanos para Piel Seca | Las Mejores Opciones 2026"
+  description="Los mejores cosméticos coreanos para piel seca. Sérums, cremas y rutinas específicas para hidratar y suavizar piel seca. Guía completa."
+>
+  <div class="container">
+    <header class="page-header">
+      <h1>Cosméticos Coreanos para Piel Seca</h1>
+      <p class="subtitle">La guía más completa de K-Beauty para hidratar tu piel seca</p>
+    </header>
+
+    <section class="intro">
+      <p>¿Tu piel se siente tirante, opaca o con descamación? Los cosméticos coreanos ofrecen soluciones efectivas para la piel seca, con fórmulas ricas en ingredientes hidratantes como <strong>ácido hialurónico</strong>, <strong>ceramidas</strong> y <strong>snail mucin</strong>.</p>
+    </section>
+
+    <section class="products-section">
+      <h2>Mejores Productos para Piel Seca</h2>
+      
+      <div class="product-cards">
+        <div class="product-card">
+          <h3>COSRX Advanced Snail 96 Mucin Power Essence</h3>
+          <p>El más vendido para hidratación profunda. 96% snail mucin.</p>
+          <span class="tag">Hidratación</span>
+          <span class="tag">Reparación</span>
+        </div>
+        
+        <div class="product-card">
+          <h3>Laneige Cream Skin Refiner</h3>
+          <p>El producto icónico de Laneige.-textura crema-agua revolutionary.</p>
+          <span class="tag">Hidratación 24h</span>
+          <span class="tag">Premium</span>
+        </div>
+        
+        <div class="product-card">
+          <h3>Pyunkang Yul Moisture Ampoule</h3>
+          <p>Minimalismo coreano. Pocos ingredientes, máxima hidratación.</p>
+          <span class="tag">Sensitive</span>
+          <span class="tag">Clean Beauty</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="routine-section">
+      <h2>Rutina Recomendada para Piel Seca</h2>
+      
+      <div class="routine-steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div class="step-content">
+            <h3>Oil Cleanser</h3>
+            <p>Limpiador oleoso para eliminar impurezas sin resecar</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">2</span>
+          <div class="step-content">
+            <h3>Hydrating Toner</h3>
+            <p>Tónico hidratante en capas múltiples</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">3</span>
+          <div class="step-content">
+            <h3>Essence/Serum</h3>
+            <p>Sérum con ácido hialurónico o snail mucin</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">4</span>
+          <div class="step-content">
+            <h3>Crema Humectante</h3>
+            <p>Crema rica para sellar la hidratación</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <span class="step-num">5</span>
+          <div class="step-content">
+            <h3>Protector Solar</h3>
+            <p>SPF 50+ (mañana)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tips-section">
+      <h2>Consejos para Piel Seca</h2>
+      <ul>
+        <li><strong>Hidratación desde adentro:</strong> Bebe 2-3 litros de agua al día</li>
+        <li><strong>Evita agua caliente:</strong> El agua muy caliente reseca la piel</li>
+        <li><strong>Capas ligeras:</strong> Aplica productos de lo más ligero a lo más espeso</li>
+        <li><strong>Consistencia:</strong> Los resultados requieren uso diario</li>
+      </ul>
+    </section>
+
+    <section class="related-section">
+      <h2>Explora Más</h2>
+      <div class="links">
+        <a href="/categorias" class="btn">Ver Categorías</a>
+        <a href="/marcas" class="btn btn-outline">Ver Marcas</a>
+      </div>
+    </section>
+  </div>
+</MainLayout>
+
+<style>
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+  .page-header { text-align: center; margin-bottom: 2rem; }
+  .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  .subtitle { color: var(--color-text-light); font-size: 1.2rem; }
+  
+  .intro { background: #f8f9fa; padding: 2rem; border-radius: 12px; margin-bottom: 3rem; }
+  .intro p { font-size: 1.1rem; line-height: 1.7; }
+  
+  .products-section { margin-bottom: 3rem; }
+  .products-section h2 { margin-bottom: 1.5rem; }
+  
+  .product-cards { display: grid; gap: 1.5rem; }
+  .product-card { background: white; border: 1px solid #eee; padding: 1.5rem; border-radius: 12px; }
+  .product-card h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+  .product-card p { color: #666; margin-bottom: 1rem; }
+  .tag { display: inline-block; background: #e8f5e9; color: #2e7d32; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; margin-right: 0.5rem; }
+  
+  .routine-section { margin-bottom: 3rem; }
+  .routine-section h2 { margin-bottom: 1.5rem; }
+  
+  .routine-steps { display: grid; gap: 1rem; }
+  .step { display: flex; gap: 1rem; align-items: flex-start; }
+  .step-num { width: 40px; height: 40px; background: var(--color-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+  .step-content h3 { margin-bottom: 0.25rem; }
+  .step-content p { color: #666; font-size: 0.95rem; }
+  
+  .tips-section { background: #fff3e0; padding: 2rem; border-radius: 12px; margin-bottom: 3rem; }
+  .tips-section h2 { margin-bottom: 1rem; }
+  .tips-section ul { list-style: none; }
+  .tips-section li { padding: 0.75rem 0; border-bottom: 1px solid #ffe0b2; }
+  .tips-section li:last-child { border: none; }
+  
+  .related-section { text-align: center; }
+  .links { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; }
+  .btn { background: var(--color-primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; }
+  .btn-outline { border: 2px solid var(--color-primary); color: var(--color-primary); background: transparent; }
+</style>

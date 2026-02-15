@@ -1,0 +1,133 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+---
+
+<MainLayout 
+  title="Cosméticos Coreanos Anti-Aging | Rutina Antiarrugas 2026"
+  description="Los mejores cosméticos coreanos para combatir líneas de expresión y arrugas. Sérums con retinol, péptidos y factores de crecimiento para una piel joven."
+>
+  <div class="container">
+    <header class="page-header">
+      <h1>Cosméticos Coreanos Anti-Aging</h1>
+      <p class="subtitle">Piel luminosa y joven con la ciencia del K-Beauty</p>
+    </header>
+
+    <section class="intro">
+      <p>El enfoque coreano para el anti-aging combina ingredientes potentes con fórmulas suaves. A diferencia de los occidentales, Priorizan la prevención y la hidratación profunda sobre los tratamientos agresivos.</p>
+    </section>
+
+    <section class="products-section">
+      <h2>Ingredientes Anti-Aging Más Efectivos</h2>
+      
+      <div class="ingredients-grid">
+        <div class="ingredient">
+          <h3>Retinol / Retinal</h3>
+          <p>El gold standard anti-aging. Estimula colágeno y cell renewal.</p>
+          <span class="brand">Missha, Some By Mi</span>
+        </div>
+        
+        <div class="ingredient">
+          <h3>Péptidos</h3>
+          <p>Señales químicas que estimulan producción de colágeno.</p>
+          <span class="brand">Mediheal, DKOO</span>
+        </div>
+        
+        <div class="ingredient">
+          <h3>Vitamina C</h3>
+          <p>Antioxidante que ilumina, previene manchas y estimula colágeno.</p>
+          <span class="brand">Beauty of Joseon, Klairs</span>
+        </div>
+        
+        <div class="ingredient">
+          <h3>Snail Mucin</h3>
+          <p>Repara, hidrata y suaviza líneas de expresión.</p>
+          <span class="brand">COSRX</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="routine-section">
+      <h2>Rutina Anti-Aging por Edad</h2>
+      
+      <div class="age-cards">
+        <div class="age-card">
+          <h3>20-30 años</h3>
+          <p><strong>Enfoque:</strong> Prevención</p>
+          <ul>
+            <li>Vitamina C diaria</li>
+            <li>Protector solar constante</li>
+            <li>Hidratación básica</li>
+            <li>Exfoliación suave</li>
+          </ul>
+        </div>
+        
+        <div class="age-card">
+          <h3>30-40 años</h3>
+          <p><strong>Enfoque:</strong> Mantenimiento</p>
+          <ul>
+            <li>Retinol (noche)</li>
+            <li>Péptidos</li>
+            <li>Sérums antiox</li>
+            <li>Eye cream</li>
+          </ul>
+        </div>
+        
+        <div class="age-card">
+          <h3>40+ años</h3>
+          <p><strong>Enfoque:</strong> Intensivo</p>
+          <ul>
+            <li>Retinol fuerte</li>
+            <li>Factor de crecimiento</li>
+            <li>Mascarillas collagen</li>
+            <li>Tratamientos khusus</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="tips-section">
+      <h2>Consejos Anti-Aging</h2>
+      <ol>
+        <li><strong>Protector solar ESENCIAL:</strong> El 80% del envejecimiento viene del sol</li>
+        <li><strong>No omitir el cuello:</strong> El cuello muestra edad rápidamente</li>
+        <li><strong>Consistencia sobre intensidad:</strong> Mejor producto moderado diario que tratamiento intensivo semanal</li>
+        <li><strong>Introduce retinol gradualmente:</strong> 2-3 veces por semana al inicio</li>
+        <li><strong>Duerme adequately:</strong> La reparación celular ocurre de noche</li>
+      </ol>
+    </section>
+  </div>
+</MainLayout>
+
+<style>
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+  .page-header { text-align: center; margin-bottom: 2rem; }
+  .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  .subtitle { color: var(--color-text-light); font-size: 1.2rem; }
+  
+  .intro { background: #fce4ec; padding: 2rem; border-radius: 12px; margin-bottom: 3rem; }
+  .intro p { font-size: 1.1rem; line-height: 1.7; }
+  
+  .products-section { margin-bottom: 3rem; }
+  .products-section h2 { margin-bottom: 1.5rem; }
+  
+  .ingredients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+  .ingredient { background: white; border: 1px solid #eee; padding: 1.5rem; border-radius: 12px; }
+  .ingredient h3 { margin-bottom: 0.5rem; color: #2e7d32; }
+  .ingredient p { color: #666; font-size: 0.95rem; margin-bottom: 0.75rem; }
+  .ingredient .brand { font-size: 0.85rem; color: #999; }
+  
+  .routine-section { margin-bottom: 3rem; }
+  .routine-section h2 { margin-bottom: 1.5rem; }
+  
+  .age-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+  .age-card { background: white; border: 1px solid #eee; padding: 1.5rem; border-radius: 12px; }
+  .age-card h3 { color: #1565c0; margin-bottom: 1rem; }
+  .age-card ul { list-style: none; }
+  .age-card li { padding: 0.5rem 0; border-bottom: 1px solid #f5f5f5; font-size: 0.95rem; }
+  
+  .tips-section { background: #f3e5f5; padding: 2rem; border-radius: 12px; }
+  .tips-section h2 { margin-bottom: 1rem; }
+  .tips-section ol { list-style: none; counter-reset: tips; }
+  .tips-section li { padding: 1rem 0; border-bottom: 1px solid #e1bee7; counter-increment: tips; position: relative; padding-left: 2rem; }
+  .tips-section li::before { content: counter(tips); position: absolute; left: 0; background: #9c27b0; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: bold; }
+</style>
