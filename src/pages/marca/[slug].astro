@@ -1,0 +1,334 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getBrandBySlug, getAllBrandSlugs, brands } from '../../data/brands';
+import { generateArticleSchema } from '../../lib/seo';
+
+export async function getStaticPaths() {
+  return getAllBrandSlugs().map(slug => ({
+    params: { slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const brand = getBrandBySlug(slug!);
+
+if (!brand) {
+  return Astro.redirect('/404');
+}
+
+const breadcrumb = [
+  { name: 'Inicio', url: 'https://cosmeticoscoreanos.co' },
+  { name: 'Marcas', url: 'https://cosmeticoscoreanos.co/marcas' },
+  { name: brand.name, url: `https://cosmeticoscoreanos.co/marca/${slug}` },
+];
+
+const relatedBrands = brands.filter(b => b.slug !== slug).slice(0, 4);
+
+const articleSchema = generateArticleSchema({
+  headline: `${brand.name} | Marca Coreana de Cosméticos`,
+  description: brand.metaDescription,
+  image: brand.image,
+  datePublished: '2026-01-01',
+  author: 'Cosméticos Coreanos Colombia',
+  url: `https://cosmeticoscoreanos.co/marca/${slug}`,
+});
+---
+
+<MainLayout 
+  title={`${brand.name} | Cosméticos Coreanos Colombia`}
+  description={brand.metaDescription}
+  image={brand.image}
+  breadcrumb={breadcrumb}
+  schema={articleSchema}
+>
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="/">Inicio</a>
+      <span>/</span>
+      <a href="/marcas">Marcas</a>
+      <span>/</span>
+      <span class="current">{brand.name}</span>
+    </nav>
+
+    <article class="brand-page">
+      <header class="brand-header">
+        <div class="brand-logo-large">
+          <span class="brand-initial">{brand.name.charAt(0)}</span>
+        </div>
+        <div class="brand-info">
+          <h1>{brand.name}</h1>
+          {brand.nameKo && <p class="brand-ko">{brand.nameKo}</p>}
+          <p class="brand-country">{brand.country}</p>
+          <p class="brand-price">Rango de precio: {brand.priceRange}</p>
+        </div>
+      </header>
+
+      <section class="content-section">
+        <h2>Sobre {brand.name}</h2>
+        <p>{brand.description}</p>
+
+        <h3>Características</h3>
+        <ul class="features-list">
+          {brand.features.map(feature => (
+            <li>{feature}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h2>Productos Populares de {brand.name}</h2>
+        <div class="products-list">
+          {brand.popularProducts.map(product => (
+            <div class="product-item">
+              <h4>{product}</h4>
+              <a href={`/producto/${encodeURIComponent(product.toLowerCase().replace(/\s+/g, '-'))}`} class="btn-small">Ver más</a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="faq-section">
+        <h2>Preguntas sobre {brand.name}</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>¿{brand.name} es cruelty-free?</summary>
+            <p>{brand.name} no testa en animales y cumple con los estándares internacionales de cruelty-free.</p>
+          </details>
+          <details class="faq-item">
+            <summary>¿Dónde comprar {brand.name} en Colombia?</summary>
+            <p>Puedes encontrar productos {brand.name} en tiendas online especializadas en K-Beauty que envíen a Colombia.</p>
+          </details>
+          <details class="faq-item">
+            <summary>¿Qué tipo de piel es mejor para {brand.name}?</summary>
+            <p>{brand.name} ofrece productos para todo tipo de piel. Consulta las especificaciones de cada producto.</p>
+          </details>
+        </div>
+      </section>
+    </article>
+
+    <aside class="sidebar">
+      <h3>Otras Marcas</h3>
+      <ul class="related-list">
+        {relatedBrands.map(related => (
+          <li>
+            <a href={`/marca/${related.slug}`}>{related.name}</a>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  </div>
+</MainLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .breadcrumb {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+  }
+  
+  .breadcrumb a {
+    color: var(--color-text-light);
+  }
+  
+  .breadcrumb a:hover {
+    color: var(--color-primary);
+  }
+  
+  .breadcrumb .current {
+    color: var(--color-text);
+    font-weight: 500;
+  }
+  
+  .brand-page {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+  }
+  
+  .brand-header {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: 16px;
+    color: white;
+    margin-bottom: 2rem;
+  }
+  
+  .brand-logo-large {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .brand-initial {
+    color: var(--color-primary);
+    font-size: 3rem;
+    font-weight: 700;
+  }
+  
+  .brand-info h1 {
+    margin-bottom: 0.25rem;
+  }
+  
+  .brand-ko {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-bottom: 0.25rem;
+  }
+  
+  .brand-country {
+    opacity: 0.9;
+  }
+  
+  .brand-price {
+    margin-top: 0.5rem;
+    font-weight: 600;
+  }
+  
+  .content-section {
+    margin-bottom: 3rem;
+  }
+  
+  .content-section h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .content-section h3 {
+    margin: 1.5rem 0 0.75rem;
+  }
+  
+  .content-section p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+  
+  .features-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .features-list li {
+    background: var(--color-bg-secondary);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+  
+  .products-list {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--color-bg-secondary);
+    border-radius: 8px;
+  }
+  
+  .product-item h4 {
+    font-size: 1rem;
+  }
+  
+  .btn-small {
+    font-size: 0.85rem;
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+  
+  .faq-list {
+    margin-top: 1.5rem;
+  }
+  
+  .faq-item {
+    background: var(--color-bg-secondary);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .faq-item summary {
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    list-style: none;
+  }
+  
+  .faq-item summary::after {
+    content: "+";
+    float: right;
+  }
+  
+  .faq-item[open] summary::after {
+    content: "-";
+  }
+  
+  .faq-item p {
+    padding: 0 1rem 1rem;
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+  }
+  
+  .sidebar {
+    background: var(--color-bg-secondary);
+    padding: 1.5rem;
+    border-radius: 12px;
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+  }
+  
+  .sidebar h3 {
+    margin-bottom: 1rem;
+  }
+  
+  .related-list {
+    list-style: none;
+  }
+  
+  .related-list li {
+    margin-bottom: 0.75rem;
+  }
+  
+  .related-list a {
+    color: var(--color-text-light);
+  }
+  
+  @media (max-width: 768px) {
+    .brand-page {
+      grid-template-columns: 1fr;
+    }
+    
+    .brand-header {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .sidebar {
+      position: static;
+    }
+  }
+</style>

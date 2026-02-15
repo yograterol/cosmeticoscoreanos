@@ -1,0 +1,208 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { brands } from '../data/brands';
+import { generateWebSiteSchema } from '../lib/seo';
+
+const schema = generateWebSiteSchema();
+---
+
+<MainLayout 
+  title="Marcas de Cosméticos Coreanos | K-Beauty Colombia"
+  description="Todas las marcas de K-Beauty disponibles en Colombia: COSRX, Innisfree, Laneige, Etude House, Missha, Purito y más."
+  schema={schema}
+>
+  <div class="container">
+    <header class="page-header">
+      <h1>Marcas de K-Beauty</h1>
+      <p>Las mejores marcas de cosméticos coreanos disponibles en Colombia</p>
+    </header>
+
+    <div class="brands-grid">
+      {brands.map((brand) => (
+        <a href={`/marca/${brand.slug}`} class="brand-card">
+          <div class="brand-logo">
+            <span>{brand.name.charAt(0)}</span>
+          </div>
+          <div class="brand-info">
+            <h2>{brand.name}</h2>
+            {brand.nameKo && <p class="brand-ko">{brand.nameKo}</p>}
+            <p class="brand-country">{brand.country}</p>
+          </div>
+          <p class="brand-description">{brand.description.slice(0, 100)}...</p>
+          <div class="brand-meta">
+            <span class="price-range">{brand.priceRange}</span>
+            <span class="product-count">{brand.popularProducts.length} productos</span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <section class="brands-info">
+      <h2>¿Por qué confiar en estas marcas?</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <span class="feature-icon">✓</span>
+          <h3>Certificaciones Internacionales</h3>
+          <p>Todas las marcas cuentan con certificaciones de seguridad y calidad.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">✓</span>
+          <h3>Ingredientes de Calidad</h3>
+          <p>Uso de ingredientes naturales y tecnología avanzada.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">✓</span>
+          <h3>Lealtad Global</h3>
+          <p>Millones de usuarios satisfechos en todo el mundo.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .page-header h1 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .page-header p {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+  }
+  
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  
+  .brand-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .brand-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    border-color: var(--color-primary);
+  }
+  
+  .brand-logo {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .brand-logo span {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .brand-info h2 {
+    margin-bottom: 0.25rem;
+  }
+  
+  .brand-ko {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.25rem;
+  }
+  
+  .brand-country {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+  
+  .brand-description {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin: 1rem 0;
+    flex-grow: 1;
+  }
+  
+  .brand-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .price-range {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+  
+  .product-count {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
+  
+  .brands-info {
+    background: var(--color-bg-secondary);
+    padding: 3rem;
+    border-radius: 16px;
+    text-align: center;
+  }
+  
+  .brands-info h2 {
+    margin-bottom: 2rem;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .feature {
+    padding: 1rem;
+  }
+  
+  .feature-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    line-height: 40px;
+    margin-bottom: 1rem;
+  }
+  
+  .feature h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .feature p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+  }
+</style>

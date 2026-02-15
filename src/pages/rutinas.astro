@@ -1,0 +1,300 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { generateArticleSchema } from '../lib/seo';
+
+const articleSchema = generateArticleSchema({
+  headline: 'Rutina K-Beauty de 10 Pasos | Guía Completa',
+  description: 'Aprende la rutina de skincare coreana de 10 pasos. Guía completa para principiantes: limpieza, tónico, sérum, hidratante y más.',
+  image: '/images/rutinas/kbeauty-routine.jpg',
+  datePublished: '2026-01-01',
+  author: 'Cosméticos Coreanos Colombia',
+  url: 'https://cosmeticoscoreanos.co/rutinas',
+});
+---
+
+<MainLayout 
+  title="Rutina K-Beauty de 10 Pasos | Guía Completa"
+  description="Aprende la rutina de skincare coreana de 10 pasos. Guía completa para principiantes en K-Beauty."
+  schema={articleSchema}
+>
+  <div class="container">
+    <header class="page-header">
+      <h1>Rutina K-Beauty de 10 Pasos</h1>
+      <p class="subtitle">La guía completa para construir tu rutina de skincare coreano</p>
+    </header>
+
+    <section class="intro">
+      <p>La rutina de skincare coreana es famosa worldwide por su enfoque preventivo y su énfasis en la hidratación. No te dejes intimidar por los "10 pasos" - son una guía, no una regla inflexible.</p>
+    </section>
+
+    <div class="routine-steps">
+      <div class="step" id="step-1">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h2>Oil Cleanser (Doble Limpieza)</h2>
+          <p>El primer paso para eliminar maquillaje, protector solar y exceso de sebo. Los limpiadores oleosos disuelven residuos grasos.</p>
+          <ul class="product-tips">
+            <li>Para piel seca: Busca ingredientes hidratantes</li>
+            <li>Para piel grasosa: Texturas más ligeras</li>
+            <li>Para piel sensible: Sin fragancias</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step" id="step-2">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h2>Water Cleanser</h2>
+          <p>El segundo paso de la doble limpieza con un limpiador base agua para eliminar impurezas restantes.</p>
+        </div>
+      </div>
+
+      <div class="step" id="step-3">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h2>Exfoliante (1-2 veces por semana)</h2>
+          <p>Elimina células muertas y destapa poros. Puede ser químico (AHA/BHA) o físico.</p>
+          <ul class="product-tips">
+            <li><strong>AHA:</strong> Para textura y manchas</li>
+            <li><strong>BHA:</strong> Para poros y acne</li>
+            <li><strong>PHA:</strong> Para piel sensible</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step" id="step-4">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h2>Toner / Esencia</h2>
+          <p>Prepara la piel para absorber mejor los productos siguientes. Aporta hidratación adicional.</p>
+        </div>
+      </div>
+
+      <div class="step" id="step-5">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h2>Tratamiento / Sérum</h2>
+          <p>El corazón de la rutina coreana. Concentrado de activos paraTarget specific concerns.</p>
+          <ul class="product-tips">
+            <li>Vitamina C: Luminosidad</li>
+            <li>Ácido hialurónico: Hidratación</li>
+            <li>Niacinamida: Poros y textura</li>
+            <li>Retinol: Anti-aging</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step" id="step-6">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <h2>Mascarilla (1-2 veces por semana)</h2>
+          <p>Tratamiento intensivo con sheet masks o wash-off masks.</p>
+        </div>
+      </div>
+
+      <div class="step" id="step-7">
+        <div class="step-number">7</div>
+        <div class="step-content">
+          <h2>Eye Cream</h2>
+          <p>Crema específica para el contorno de ojos. La piel ahí es más delicada.</p>
+        </div>
+      </div>
+
+      <div class="step" id="step-8">
+        <div class="step-number">8</div>
+        <div class="step-content">
+          <h2>Moisturizer / Cream</h2>
+          <p>Sella toda la hidratación. Elige textura según tu tipo de piel.</p>
+          <ul class="product-tips">
+            <li>Gel cream: Piel mixta/grasosa</li>
+            <li>Emulsión: Piel normal</li>
+            <li>Crema rica: Piel seca</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step" id="step-9">
+        <div class="step-number">9</div>
+        <div class="step-content">
+          <h2>Mascarilla Nocturna (opcional)</h2>
+          <p>Sleeping mask para hidratación intensiva durante la noche.</p>
+        </div>
+      </div>
+
+      <div class="step" id="step-10">
+        <div class="step-number">10</div>
+        <div class="step-content">
+          <h2>Protector Solar (Mañana)</h2>
+          <p>El paso más importante. Protege contra UV y previene daño, manchas y envejecimiento.</p>
+          <ul class="product-tips">
+            <li>SPF 50+ PA++++ mínimo</li>
+            <li>Reaplica cada 2-3 horas</li>
+            <li>Usa incluso en interiores</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <section class="routine-tips">
+      <h2>Consejos Extra</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h3>🎯 Menos es más</h3>
+          <p>No necesitas todos los pasos. Adáptalos a tu piel.</p>
+        </div>
+        <div class="tip-card">
+          <h3>⏰ Paciencia</h3>
+          <p>Los productos tardan 4-6 semanas en mostrar resultados.</p>
+        </div>
+        <div class="tip-card">
+          <h3>🔄顺序 (Orden)</h3>
+          <p>Aplica del más líquido al más espeso.</p>
+        </div>
+        <div class="tip-card">
+          <h3>🌙 Noche vs Día</h3>
+          <p>De día: protector solar. De noche: tratamientos y retinol.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .page-header h1 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .subtitle {
+    color: var(--color-text-light);
+    font-size: 1.2rem;
+  }
+  
+  .intro {
+    background: var(--color-bg-secondary);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  
+  .intro p {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+  }
+  
+  .routine-steps {
+    position: relative;
+  }
+  
+  .routine-steps::before {
+    content: "";
+    position: absolute;
+    left: 24px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-primary);
+    opacity: 0.3;
+  }
+  
+  .step {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  .step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+  
+  .step-content {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    flex-grow: 1;
+  }
+  
+  .step-content h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .step-content p {
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+  }
+  
+  .product-tips {
+    background: var(--color-bg-secondary);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+  
+  .product-tips li {
+    margin-bottom: 0.5rem;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+  }
+  
+  .routine-tips {
+    margin-top: 4rem;
+    padding: 3rem;
+    background: linear-gradient(135deg, #e8f5e9 0%, #f8f9fa 100%);
+    border-radius: 16px;
+  }
+  
+  .routine-tips h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .tip-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+  }
+  
+  .tip-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .tip-card p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+  }
+</style>

@@ -1,0 +1,333 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { categories } from '../data/categories';
+import { brands } from '../data/brands';
+import { generateOrganizationSchema, generateWebSiteSchema } from '../lib/seo';
+
+const organizationSchema = generateOrganizationSchema();
+const websiteSchema = generateWebSiteSchema();
+
+const schema = [organizationSchema, websiteSchema];
+---
+
+<MainLayout 
+  title="Cosméticos Coreanos Colombia | K-Beauty en Español"
+  description="Descubre los mejores cosméticos coreanos en Colombia. Sérums, cremas, protectores solares y más de las mejores marcas: COSRX, Innisfree, Laneige, Etude House. Envíos a todo el país."
+>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Cosméticos Coreanos <span class="highlight">K-Beauty</span> en Colombia</h1>
+        <p class="hero-subtitle">Tu guía completa de skincare y maquillaje coreano. Descubre los mejores productos de las marcas más populares de K-Beauty.</p>
+        <div class="hero-buttons">
+          <a href="/categorias" class="btn btn-primary">Explorar Categorías</a>
+          <a href="/marcas" class="btn btn-secondary">Ver Marcas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Categorías Populares</h2>
+      <p class="section-subtitle">Explora los diferentes tipos de productos de K-Beauty</p>
+      <div class="categories-grid">
+        {categories.slice(0, 8).map((category) => (
+          <a href={`/categoria/${category.slug}`} class="category-card">
+            <div class="category-icon">
+              <span class="emoji">{getCategoryEmoji(category.slug)}</span>
+            </div>
+            <h3>{category.name}</h3>
+            <p>{category.description.slice(0, 60)}...</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products / Top Brands -->
+  <section class="section bg-secondary">
+    <div class="container">
+      <h2 class="section-title">Marcas Destacadas</h2>
+      <p class="section-subtitle">Las mejores marcas de K-Beauty disponibles en Colombia</p>
+      <div class="brands-grid">
+        {brands.slice(0, 6).map((brand) => (
+          <a href={`/marca/${brand.slug}`} class="brand-card">
+            <div class="brand-logo">
+              <span class="brand-initial">{brand.name.charAt(0)}</span>
+            </div>
+            <h3>{brand.name}</h3>
+            <p class="brand-country">{brand.country}</p>
+            <span class="brand-price">{brand.priceRange}</span>
+          </a>
+        ))}
+      </div>
+      <div class="section-cta">
+        <a href="/marcas" class="btn">Ver Todas las Marcas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">¿Por qué elegir K-Beauty?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🌿</div>
+          <h3>Ingredientes Naturaless</h3>
+          <p>Los cosméticos coreanos utilizan ingredientes naturales como té verde, snail mucin, propóleo y más.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🔬</div>
+          <h3>Innovación Científica</h3>
+          <p>La investigación/coreana está a la vanguardia de la tecnología cosmética con fórmulas avanzadas.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">✨</div>
+          <h3>Minimal Ingredients, Máximo Resultado</h3>
+          <p>Formulaciones minimalistas que maximizan la efectividad sin irritar la piel.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💧</div>
+          <h3>Hidratación Profunda</h3>
+          <p>El enfoque coreano en la hidratación garantiza piel luminosa y saludable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>¿Listo para comenzar tu rutina K-Beauty?</h2>
+      <p>Aprende la rutina de 10 pasos y descubre los mejores productos para tu tipo de piel.</p>
+      <a href="/rutinas" class="btn btn-light">Comenzar Rutina K-Beauty</a>
+    </div>
+  </section>
+</MainLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e9 100%);
+    padding: 4rem 0;
+    text-align: center;
+  }
+  
+  .hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+  
+  .highlight {
+    color: var(--color-primary);
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .btn-primary {
+    background: var(--color-primary);
+  }
+  
+  .btn-secondary {
+    background: var(--color-secondary);
+  }
+  
+  .btn-light {
+    background: white;
+    color: var(--color-primary);
+  }
+  
+  .section {
+    padding: 4rem 0;
+  }
+  
+  .bg-secondary {
+    background: var(--color-bg-secondary);
+  }
+  
+  .section-title {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .section-subtitle {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+  }
+  
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .category-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    color: inherit;
+  }
+  
+  .category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    border-color: var(--color-primary);
+  }
+  
+  .category-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .category-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .category-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+  }
+  
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .brand-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    color: inherit;
+  }
+  
+  .brand-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+  
+  .brand-logo {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+  
+  .brand-initial {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .brand-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .brand-country {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+  }
+  
+  .brand-price {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+  
+  .section-cta {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .benefit-card {
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .benefit-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .benefit-card h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .benefit-card p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+  }
+  
+  .cta-section {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #1e8449 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+  }
+  
+  .cta-section h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .cta-section p {
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+</style>
+
+<script>
+  function getCategoryEmoji(slug: string): string {
+    const emojis: Record<string, string> = {
+      'serum-facial': '💉',
+      'crema-humectante': '🧴',
+      'protector-solar': '☀️',
+      'limpieza-facial': '🧼',
+      'mascarilla-facial': '🎭',
+      'tonico-facial': '💧',
+      'accesorios-k-beauty': '🪨',
+      'rutinas-k-beauty': '📖'
+    };
+    return emojis[slug] || '✨';
+  }
+</script>

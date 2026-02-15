@@ -1,0 +1,185 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { generateBreadcrumbSchema } from '../lib/seo';
+import type { BreadcrumbItem } from '../lib/schema';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  breadcrumb?: BreadcrumbItem[];
+}
+
+const { title, description, image, breadcrumb } = Astro.props;
+
+const schema = breadcrumb ? generateBreadcrumbSchema(breadcrumb, Astro.url.pathname) : null;
+---
+
+<BaseLayout seo={{ title, description, image, schema, url: Astro.url.pathname }}>
+  <header class="site-header">
+    <div class="container">
+      <nav class="main-nav">
+        <a href="/" class="logo">
+          <span class="logo-text">Cosméticos</span>
+          <span class="logo-accent">Coreanos</span>
+          <span class="logo-tld">.co</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="/categorias">Categorías</a></li>
+          <li><a href="/marcas">Marcas</a></li>
+          <li><a href="/rutinas">Rutinas</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Cosméticos Coreanos Colombia</h4>
+          <p>Tu guía completa de K-Beauty en Colombia. Descubre los mejores productos coreanos.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Categorías</h4>
+          <ul>
+            <li><a href="/categoria/serum-facial">Sérum Facial</a></li>
+            <li><a href="/categoria/crema-humectante">Crema Humectante</a></li>
+            <li><a href="/categoria/protector-solar">Protector Solar</a></li>
+            <li><a href="/categoria/limpieza-facial">Limpieza Facial</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Marcas</h4>
+          <ul>
+            <li><a href="/marca/cosrx">COSRX</a></li>
+            <li><a href="/marca/innisfree">Innisfree</a></li>
+            <li><a href="/marca/laneige">Laneige</a></li>
+            <li><a href="/marca/etude-house">Etude House</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/politica-privacidad">Política de Privacidad</a></li>
+            <li><a href="/terminos-condiciones">Términos y Condiciones</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cosméticos Coreanos Colombia. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
+
+<style>
+  .site-header {
+    background: white;
+    border-bottom: 1px solid var(--color-border);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: baseline;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .logo-text {
+    color: var(--color-text);
+  }
+  
+  .logo-accent {
+    color: var(--color-primary);
+  }
+  
+  .logo-tld {
+    color: var(--color-text-light);
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+  }
+  
+  .nav-links a {
+    color: var(--color-text);
+    font-weight: 500;
+  }
+  
+  .nav-links a:hover {
+    color: var(--color-primary);
+  }
+  
+  main {
+    min-height: calc(100vh - 200px);
+  }
+  
+  .site-footer {
+    background: var(--color-bg-secondary);
+    padding: 3rem 0 1rem;
+    margin-top: 4rem;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .footer-col h4 {
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+  
+  .footer-col p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+  }
+  
+  .footer-col ul {
+    list-style: none;
+  }
+  
+  .footer-col ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-col ul a {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+  }
+  
+  .footer-col ul a:hover {
+    color: var(--color-primary);
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid var(--color-border);
+    padding-top: 1rem;
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 0.85rem;
+  }
+</style>

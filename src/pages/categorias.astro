@@ -1,0 +1,165 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { categories } from '../data/categories';
+import { generateWebSiteSchema } from '../lib/seo';
+
+const schema = generateWebSiteSchema();
+---
+
+<MainLayout 
+  title="Categorías de Cosméticos Coreanos | K-Beauty Colombia"
+  description="Explora todas las categorías de cosméticos coreanos: sérums, cremas, protectores solares, limpiadores y más. Guía completa de K-Beauty en español."
+  schema={schema}
+>
+  <div class="container">
+    <header class="page-header">
+      <h1>Categorías de K-Beauty</h1>
+      <p>Explora todos los tipos de productos coreanos para tu rutina de skincare</p>
+    </header>
+
+    <div class="categories-grid">
+      {categories.map((category) => (
+        <a href={`/categoria/${category.slug}`} class="category-card">
+          <div class="category-icon">
+            {category.slug === 'serum-facial' && '💉'}
+            {category.slug === 'crema-humectante' && '🧴'}
+            {category.slug === 'protector-solar' && '☀️'}
+            {category.slug === 'limpieza-facial' && '🧼'}
+            {category.slug === 'mascarilla-facial' && '🎭'}
+            {category.slug === 'tonico-facial' && '💧'}
+            {category.slug === 'accesorios-k-beauty' && '🪨'}
+            {category.slug === 'rutinas-k-beauty' && '📖'}
+          </div>
+          <h2>{category.name}</h2>
+          <p>{category.description}</p>
+          <div class="category-keywords">
+            {category.keywords.slice(0, 3).map(kw => (
+              <span class="kw">{kw}</span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <section class="info-section">
+      <h2>¿Cómo elegir la categoría correcta?</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>1. Identifica tu tipo de piel</h3>
+          <p>Piel seca, mixta, grasosa o sensible - cada tipo necesita ingredientes diferentes.</p>
+        </div>
+        <div class="info-card">
+          <h3>2. Define tus objetivos</h3>
+          <p>¿Hidratación, anti-aging, control de acne o luminosidad? Elige productos específicos.</p>
+        </div>
+        <div class="info-card">
+          <h3>3. Construye tu rutina</h3>
+          <p>Empieza con lo básico y añade productos gradualmente.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .page-header h1 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .page-header p {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+  }
+  
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  
+  .category-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    color: inherit;
+  }
+  
+  .category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    border-color: var(--color-primary);
+  }
+  
+  .category-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .category-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .category-card p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  
+  .category-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .kw {
+    background: var(--color-bg-secondary);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+  }
+  
+  .info-section {
+    text-align: center;
+    padding: 3rem;
+    background: var(--color-bg-secondary);
+    border-radius: 16px;
+  }
+  
+  .info-section h2 {
+    margin-bottom: 2rem;
+  }
+  
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .info-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+  }
+  
+  .info-card p {
+    color: var(--color-text-light);
+  }
+</style>
